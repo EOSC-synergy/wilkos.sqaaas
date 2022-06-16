@@ -1,0 +1,17 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/1.7.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+sqa_criteria:
+  QC.FAIR:
+    repos:
+      this_repo:
+        commands:
+        - fuji.py -OID http://hdl.handle.net/10261/157765 --tool_endpoint http://localhost:1071/fuji/api/v1/evaluate
+          -T oai_pmh -E http://digital.csic.es/dspace-oai/request
+        container: qc.fair_scummy-khaki-termite
+timeout: 600
